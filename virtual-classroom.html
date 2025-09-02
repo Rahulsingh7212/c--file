@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Classroom - Low Bandwidth Virtual Learning</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .header p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .video-section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .audio-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 6px;
+        }
+
+        .audio-controls button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .join-audio {
+            background: #27ae60;
+            color: white;
+        }
+
+        .join-audio:hover {
+            background: #219a52;
+        }
+
+        .mute-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .mute-btn:hover {
+            background: #c0392b;
+        }
+
+        .quality-selector {
+            padding: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .bandwidth-indicator {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #27ae60;
+        }
+
+        .slides-viewer {
+            background: #34495e;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            min-height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-content {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .slide-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .slide-nav-btn {
+            padding: 8px 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .slide-nav-btn:hover {
+            background: #2980b9;
+        }
+
+        .slide-nav-btn:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+        }
+
+        .interactive-panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .tab-buttons {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .tab-btn {
+            padding: 10px 15px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            border-bottom-color: #3498db;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .chat-container {
+            height: 200px;
+            border: 1px solid #ecf0f1;
+            border-radius: 4px;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #fafafa;
+        }
+
+        .chat-message {
+            margin-bottom: 8px;
+            padding: 5px;
+            background: white;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .chat-input button {
+            padding: 8px 16px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .poll-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .poll-option {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .poll-option:hover {
+            background: #d5dbdb;
+        }
+
+        .quiz-container {
+            padding: 15px;
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .quiz-option {
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            cursor: pointer;
+            background: white;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .quiz-option:hover {
+            background: #ecf0f1;
+        }
+
+        .quiz-option.selected {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .submit-quiz {
+            padding: 10px 20px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .offline-content {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ecf0f1;
+            font-size: 0.9rem;
+        }
+
+        .download-btn {
+            padding: 6px 12px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .download-btn:hover {
+            background: #219a52;
+        }
+
+        .file-size {
+            color: #7f8c8d;
+            font-size: 0.8rem;
+        }
+
+        /* Mobile Responsive */
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 2fr 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .audio-controls {
+                flex-wrap: nowrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 5px;
+            }
+            
+            .audio-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .audio-controls button,
+            .quality-selector {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .slide-navigation {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .tab-buttons {
+                flex-wrap: wrap;
+            }
+            
+            .tab-btn {
+                flex: 1;
+                min-width: 80px;
+            }
+        }
+
+        .connection-warning {
+            background: #f39c12;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .recording-indicator {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .recording-dot {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎓 Rural Classroom</h1>
+            <p>Low-bandwidth virtual learning for everyone</p>
+            <div class="recording-indicator" style="display: none;">
+                <div class="recording-dot"></div>
+                Recording in progress
+            </div>
+        </header>
+
+        <div class="connection-warning" id="connectionWarning">
+            ⚠️ Poor connection detected. Switching to audio-only mode for better experience.
+        </div>
+
+        <div class="main-content">
+            <div class="video-section">
+                <h3>📡 Live Session</h3>
+                
+                <div class="audio-controls">
+                    <button class="join-audio" id="joinAudio">🔊 Join Audio</button>
+                    <button class="mute-btn" id="muteBtn">🔇 Mute</button>
+                    <select class="quality-selector" id="qualitySelector">
+                        <option value="audio-only">Audio Only (2 KB/s)</option>
+                        <option value="low-video">Low Video (10 KB/s)</option>
+                        <option value="medium-video">Medium Video (25 KB/s)</option>
+                    </select>
+                    <div class="bandwidth-indicator">
+                        <div class="status-dot" id="connectionStatus"></div>
+                        <span id="bandwidthText">Good Connection</span>
+                    </div>
+                </div>
+
+                <div class="slides-viewer">
+                    <div class="slide-content" id="slideContent">
+                        <h2>Welcome to Today's Lecture</h2>
+                        <p>Introduction to Artificial Intelligence</p>
+                        <p>📊 Slide 1 of 15</p>
+                    </div>
+                    <div class="slide-navigation">
+                        <button class="slide-nav-btn" id="prevSlide" disabled>⬅️ Previous</button>
+                        <button class="slide-nav-btn" id="nextSlide">Next ➡️</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-panel">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="chat">💬 Chat</button>
+                    <button class="tab-btn" data-tab="poll">📊 Poll</button>
+                    <button class="tab-btn" data-tab="quiz">❓ Quiz</button>
+                </div>
+
+                <div class="tab-content active" id="chat">
+                    <div class="chat-container" id="chatContainer">
+                        <div class="chat-message">
+                            <strong>Instructor:</strong> Welcome everyone! Today we'll explore AI fundamentals.
+                        </div>
+                        <div class="chat-message">
+                            <strong>Student1:</strong> Thank you for the session!
+                        </div>
+                        <div class="chat-message">
+                            <strong>Student2:</strong> Audio quality is excellent despite low bandwidth.
+                        </div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="Type your message...">
+                        <button id="sendChat">Send</button>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="poll">
+                    <div class="poll-question">
+                        What is your current understanding level of AI?
+                    </div>
+                    <div class="poll-options">
+                        <div class="poll-option" data-option="beginner">
+                            <input type="radio" name="poll" value="beginner" id="poll1">
+                            <label for="poll1">🟢 Beginner (25%)</label>
+                        </div>
+                        <div class="poll-option" data-option="intermediate">
+                            <input type="radio" name="poll" value="intermediate" id="poll2">
+                            <label for="poll2">🟡 Intermediate (45%)</label>
+                        </div>
+                        <div class="poll-option" data-option="advanced">
+                            <input type="radio" name="poll" value="advanced" id="poll3">
+                            <label for="poll3">🔴 Advanced (30%)</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="quiz">
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            Quick Check: What does AI stand for?
+                        </div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" data-answer="a">A) Artificial Intelligence</div>
+                            <div class="quiz-option" data-answer="b">B) Automated Information</div>
+                            <div class="quiz-option" data-answer="c">C) Advanced Integration</div>
+                            <div class="quiz-option" data-answer="d">D) Application Interface</div>
+                        </div>
+                        <button class="submit-quiz" id="submitQuiz">Submit Answer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="offline-content">
+            <h3>📱 Offline Content Downloads</h3>
+            <p style="font-size: 0.9rem; color: #7f8c8d; margin-bottom: 15px;">
+                Download content during off-peak hours for offline study
+            </p>
+            
+            <div class="download-item">
+                <div>
+                    <strong>AI Lecture Audio</strong><br>
+                    <span class="file-size">2.1 MB - Audio recording</span>
+                </div>
+                <button class="download-btn" data-file="lecture-audio">Download</button>
+            </div>
+            
+            <div class="download-item">
+                <div>
+                    <strong>Lecture Slides (PDF)</strong><br>
+                    <span class="file-size">450 KB - 15 slides</span>
+                </div>
+                <button class="download-btn" data-file="lecture-slides">Download</button>
+            </div>
+            
+            <div class="download-item">
+                <div>
+                    <strong>Practice Exercises</strong><br>
+                    <span class="file-size">125 KB - Text format</span>
+                </div>
+                <button class="download-btn" data-file="exercises">Download</button>
+            </div>
+            
+            <div class="download-item">
+                <div>
+                    <strong>AI Concepts Summary</strong><br>
+                    <span class="file-size">89 KB - Study notes</span>
+                </div>
+                <button class="download-btn" data-file="summary">Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Virtual Classroom JavaScript functionality
+        class VirtualClassroom {
+            constructor() {
+                this.currentSlide = 1;
+                this.totalSlides = 15;
+                this.isAudioConnected = false;
+                this.isMuted = false;
+                this.connectionQuality = 'good';
+                this.slides = [
+                    {
+                        title: "Welcome to Today's Lecture",
+                        content: "Introduction to Artificial Intelligence",
+                        slide: "1 of 15"
+                    },
+                    {
+                        title: "What is Artificial Intelligence?",
+                        content: "AI is the simulation of human intelligence in machines",
+                        slide: "2 of 15"
+                    },
+                    {
+                        title: "Types of AI",
+                        content: "• Narrow AI\n• General AI\n• Super AI",
+                        slide: "3 of 15"
+                    },
+                    {
+                        title: "Machine Learning Basics",
+                        content: "Learning from data without explicit programming",
+                        slide: "4 of 15"
+                    },
+                    {
+                        title: "AI Applications",
+                        content: "• Healthcare\n• Transportation\n• Education\n• Entertainment",
+                        slide: "5 of 15"
+                    }
+                ];
+                this.initializeEventListeners();
+                this.simulateBandwidthMonitoring();
+            }
+
+            initializeEventListeners() {
+                // Audio controls
+                document.getElementById('joinAudio').addEventListener('click', () => this.toggleAudio());
+                document.getElementById('muteBtn').addEventListener('click', () => this.toggleMute());
+                document.getElementById('qualitySelector').addEventListener('change', (e) => this.changeQuality(e.target.value));
+
+                // Slide navigation
+                document.getElementById('prevSlide').addEventListener('click', () => this.previousSlide());
+                document.getElementById('nextSlide').addEventListener('click', () => this.nextSlide());
+
+                // Tab switching
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.switchTab(e.target.dataset.tab));
+                });
+
+                // Chat functionality
+                document.getElementById('sendChat').addEventListener('click', () => this.sendChatMessage());
+                document.getElementById('chatInput').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') this.sendChatMessage();
+                });
+
+                // Quiz functionality
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.addEventListener('click', (e) => this.selectQuizOption(e.target));
+                });
+                document.getElementById('submitQuiz').addEventListener('click', () => this.submitQuiz());
+
+                // Download functionality
+                document.querySelectorAll('.download-btn').forEach(btn => {
+                    btn.addEventListener('click', (e) => this.downloadContent(e.target.dataset.file));
+                });
+            }
+
+            toggleAudio() {
+                const btn = document.getElementById('joinAudio');
+                const muteBtn = document.getElementById('muteBtn');
+                
+                if (!this.isAudioConnected) {
+                    this.isAudioConnected = true;
+                    btn.textContent = '🔊 Connected';
+                    btn.style.background = '#27ae60';
+                    muteBtn.disabled = false;
+                    this.showNotification('Audio connected successfully!', 'success');
+                    
+                    // Start recording indicator
+                    document.querySelector('.recording-indicator').style.display = 'inline-flex';
+                } else {
+                    this.isAudioConnected = false;
+                    btn.textContent = '🔊 Join Audio';
+                    btn.style.background = '#3498db';
+                    muteBtn.disabled = true;
+                    this.showNotification('Audio disconnected', 'info');
+                    
+                    // Stop recording indicator
+                    document.querySelector('.recording-indicator').style.display = 'none';
+                }
+            }
+
+            toggleMute() {
+                const btn = document.getElementById('muteBtn');
+                if (this.isMuted) {
+                    this.isMuted = false;
+                    btn.textContent = '🔇 Mute';
+                    btn.style.background = '#e74c3c';
+                } else {
+                    this.isMuted = true;
+                    btn.textContent = '🔊 Unmute';
+                    btn.style.background = '#27ae60';
+                }
+            }
+
+            changeQuality(quality) {
+                const qualityMap = {
+                    'audio-only': { text: 'Audio Only Mode', bandwidth: '2 KB/s' },
+                    'low-video': { text: 'Low Video Quality', bandwidth: '10 KB/s' },
+                    'medium-video': { text: 'Medium Video Quality', bandwidth: '25 KB/s' }
+                };
+                
+                const selected = qualityMap[quality];
+                this.showNotification(`Switched to ${selected.text} (${selected.bandwidth})`, 'info');
+                
+                // Simulate quality adjustment
+                if (quality === 'audio-only') {
+                    document.querySelector('.slides-viewer').style.background = '#2c3e50';
+                } else {
+                    document.querySelector('.slides-viewer').style.background = '#34495e';
+                }
+            }
+
+            previousSlide() {
+                if (this.currentSlide > 1) {
+                    this.currentSlide--;
+                    this.updateSlideContent();
+                }
+            }
+
+            nextSlide() {
+                if (this.currentSlide < this.totalSlides) {
+                    this.currentSlide++;
+                    this.updateSlideContent();
+                }
+            }
+
+            updateSlideContent() {
+                const slideData = this.slides[this.currentSlide - 1] || {
+                    title: `Slide ${this.currentSlide}`,
+                    content: "Content loading...",
+                    slide: `${this.currentSlide} of ${this.totalSlides}`
+                };
+
+                const slideContent = document.getElementById('slideContent');
+                slideContent.innerHTML = `
+                    <h2>${slideData.title}</h2>
+                    <p>${slideData.content.replace(/\n/g, '<br>')}</p>
+                    <p>📊 Slide ${slideData.slide}</p>
+                `;
+
+                // Update navigation buttons
+                document.getElementById('prevSlide').disabled = this.currentSlide === 1;
+                document.getElementById('nextSlide').disabled = this.currentSlide === this.totalSlides;
+            }
+
+            switchTab(tabName) {
+                // Update tab buttons
+                document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+                // Update tab content
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                document.getElementById(tabName).classList.add('active');
+            }
+
+            sendChatMessage() {
+                const input = document.getElementById('chatInput');
+                const message = input.value.trim();
+                
+                if (message) {
+                    const chatContainer = document.getElementById('chatContainer');
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'chat-message';
+                    messageDiv.innerHTML = `<strong>You:</strong> ${message}`;
+                    chatContainer.appendChild(messageDiv);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    input.value = '';
+                    
+                    // Simulate instructor response (for demo)
+                    setTimeout(() => {
+                        const responseDiv = document.createElement('div');
+                        responseDiv.className = 'chat-message';
+                        responseDiv.innerHTML = `<strong>Instructor:</strong> Thank you for your question. I'll address that in the next slide.`;
+                        chatContainer.appendChild(responseDiv);
+                        chatContainer.scrollTop = chatContainer.scrollHeight;
+                    }, 2000);
+                }
+            }
+
+            selectQuizOption(option) {
+                document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+            }
+
+            submitQuiz() {
+                const selected = document.querySelector('.quiz-option.selected');
+                if (selected) {
+                    const answer = selected.dataset.answer;
+                    if (answer === 'a') {
+                        this.showNotification('Correct! Great job! 🎉', 'success');
+                    } else {
+                        this.showNotification('Not quite right. The correct answer is A) Artificial Intelligence', 'error');
+                    }
+                } else {
+                    this.showNotification('Please select an answer first', 'warning');
+                }
+            }
+
+            downloadContent(fileType) {
+                const files = {
+                    'lecture-audio': { name: 'AI_Lecture_Audio.mp3', size: '2.1 MB' },
+                    'lecture-slides': { name: 'AI_Lecture_Slides.pdf', size: '450 KB' },
+                    'exercises': { name: 'AI_Practice_Exercises.txt', size: '125 KB' },
+                    'summary': { name: 'AI_Concepts_Summary.txt', size: '89 KB' }
+                };
+                
+                const file = files[fileType];
+                if (file) {
+                    this.showNotification(`Downloading ${file.name} (${file.size})...`, 'info');
+                    
+                    // Simulate download progress
+                    setTimeout(() => {
+                        this.showNotification(`${file.name} downloaded successfully! 📱`, 'success');
+                    }, 2000);
+                }
+            }
+
+            simulateBandwidthMonitoring() {
+                setInterval(() => {
+                    const conditions = ['good', 'fair', 'poor'];
+                    const randomCondition = conditions[Math.floor(Math.random() * conditions.length)];
+                    
+                    const statusDot = document.getElementById('connectionStatus');
+                    const bandwidthText = document.getElementById('bandwidthText');
+                    const connectionWarning = document.getElementById('connectionWarning');
+                    
+                    switch (randomCondition) {
+                        case 'good':
+                            statusDot.style.background = '#27ae60';
+                            bandwidthText.textContent = 'Good Connection';
+                            connectionWarning.style.display = 'none';
+                            break;
+                        case 'fair':
+                            statusDot.style.background = '#f39c12';
+                            bandwidthText.textContent = 'Fair Connection';
+                            connectionWarning.style.display = 'none';
+                            break;
+                        case 'poor':
+                            statusDot.style.background = '#e74c3c';
+                            bandwidthText.textContent = 'Poor Connection';
+                            connectionWarning.style.display = 'block';
+                            // Auto-switch to audio only on poor connection
+                            document.getElementById('qualitySelector').value = 'audio-only';
+                            this.changeQuality('audio-only');
+                            break;
+                    }
+                }, 15000); // Check every 15 seconds
+            }
+
+            showNotification(message, type = 'info') {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    padding: 12px 20px;
+                    border-radius: 6px;
+                    color: white;
+                    font-size: 0.9rem;
+                    z-index: 1000;
+                    max-width: 300px;
+                    animation: slideIn 0.3s ease;
+                `;
+                
+                const colors = {
+                    success: '#27ae60',
+                    error: '#e74c3c',
+                    warning: '#f39c12',
+                    info: '#3498db'
+                };
+                
+                notification.style.background = colors[type] || colors.info;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                // Auto remove after 4 seconds
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 4000);
+            }
+        }
+
+        // Initialize the virtual classroom when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new VirtualClassroom();
+        });
+
+        // Add CSS animation for notifications
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Classroom - Smart Learning for Everyone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .feature-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: white;
+            border-radius: 15px;
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+
+        .cta-section h2 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 20px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-student {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+        }
+
+        .btn-student:hover {
+            background: linear-gradient(135deg, #2980b9, #21618c);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-educator {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .btn-educator:hover {
+            background: linear-gradient(135deg, #c0392b, #a93226);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .tech-specs {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .tech-specs h3 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .spec-item {
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .spec-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+        }
+
+        .spec-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .spec-item p {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            font-size: 1rem;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-section {
+                padding: 30px 20px;
+            }
+            
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+            
+            .button-group {
+                grid-template-columns: 1fr;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .feature-card {
+                padding: 20px;
+            }
+            
+            .tech-specs {
+                padding: 20px;
+            }
+            
+            .specs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .bandwidth-demo {
+            background: #2c3e50;
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .bandwidth-demo h3 {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .bandwidth-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .bandwidth-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .bandwidth-speed {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .bandwidth-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🎓 Rural Classroom</h1>
+            <p>Bridging the education gap with smart, low-bandwidth virtual learning solutions designed for rural colleges and institutes.</p>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">2KB/s</div>
+                <div class="stat-label">Minimum Bandwidth</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">Audio Quality</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Offline Access</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">₹0</div>
+                <div class="stat-label">License Cost</div>
+            </div>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📡</div>
+                <h3>Ultra-Low Bandwidth</h3>
+                <p>Designed specifically for rural connectivity. Works seamlessly on 2G networks with audio-first approach and intelligent content compression.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Mobile Optimized</h3>
+                <p>Perfect for entry-level smartphones. Responsive design ensures excellent experience across all devices without requiring expensive hardware.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💾</div>
+                <h3>Offline Ready</h3>
+                <p>Download lectures, slides, and materials during off-peak hours. Study anytime, anywhere, even without internet connectivity.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Interactive Learning</h3>
+                <p>Engage with polls, quizzes, and real-time chat that work perfectly on low-speed connections. Keep students actively participating.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">👩‍🏫</div>
+                <h3>Educator Friendly</h3>
+                <p>Simple dashboard for instructors to deliver lectures from anywhere. No technical expertise required - just focus on teaching.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔄</div>
+                <h3>Auto-Adaptive</h3>
+                <p>Automatically adjusts quality based on connection speed. Ensures consistent experience regardless of network conditions.</p>
+            </div>
+        </div>
+
+        <div class="bandwidth-demo">
+            <h3>📊 Bandwidth Optimization</h3>
+            <p>Our system adapts to your connection speed automatically</p>
+            <div class="bandwidth-comparison">
+                <div class="bandwidth-item">
+                    <div class="bandwidth-speed">2 KB/s</div>
+                    <div class="bandwidth-desc">Audio Only<br>Crystal clear voice</div>
+                </div>
+                <div class="bandwidth-item">
+                    <div class="bandwidth-speed">10 KB/s</div>
+                    <div class="bandwidth-desc">Low Video<br>Audio + basic slides</div>
+                </div>
+                <div class="bandwidth-item">
+                    <div class="bandwidth-speed">25 KB/s</div>
+                    <div class="bandwidth-desc">Enhanced Mode<br>Full interactive experience</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Choose Your Role</h2>
+            <p>Whether you're a student ready to learn or an educator ready to teach, our platform provides the perfect low-bandwidth solution for quality education.</p>
+            
+            <div class="button-group">
+                <a href="virtual-classroom.html" class="btn btn-student">
+                    🎓 Student Interface
+                    <br><small style="font-weight: normal; opacity: 0.8;">Join live sessions & access content</small>
+                </a>
+                <a href="educator-dashboard.html" class="btn btn-educator">
+                    👩‍🏫 Educator Dashboard
+                    <br><small style="font-weight: normal; opacity: 0.8;">Deliver lectures & manage sessions</small>
+                </a>
+            </div>
+        </div>
+
+        <div class="tech-specs">
+            <h3>🛠️ Technical Specifications</h3>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <div class="spec-icon">🌐</div>
+                    <h4>Web-Based</h4>
+                    <p>No app installation required. Works directly in any browser on any device.</p>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-icon">🔧</div>
+                    <h4>Zero Setup</h4>
+                    <p>Ready to use immediately. No complex configurations or technical expertise needed.</p>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-icon">💝</div>
+                    <h4>Free & Open</h4>
+                    <p>No licensing fees or hidden costs. Perfect for resource-constrained institutions.</p>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-icon">🔒</div>
+                    <h4>Secure</h4>
+                    <p>Built-in security features protect both educators and students during sessions.</p>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-icon">📊</div>
+                    <h4>Analytics</h4>
+                    <p>Real-time insights into student engagement and connection quality.</p>
+                </div>
+                
+                <div class="spec-item">
+                    <div class="spec-icon">🎥</div>
+                    <h4>Recording</h4>
+                    <p>Automatic session recording with intelligent compression for offline access.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>🌟 Built for Smart India Hackathon 2024 - Empowering Rural Education Through Technology</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                Addressing the digital divide with innovative, context-aware solutions for rural diploma colleges
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple entrance animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.feature-card, .stat-card');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(20px)';
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        
+                        setTimeout(() => {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                        
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Add click analytics simulation
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // Simulate analytics tracking
+                    const role = e.target.classList.contains('btn-student') ? 'Student' : 'Educator';
+                    console.log(`${role} interface accessed`);
+                });
+            });
+
+            // Simulate real-time stats updates
+            const updateStats = () => {
+                const stats = document.querySelectorAll('.stat-number');
+                
+                // Bandwidth efficiency
+                const bandwidths = ['2KB/s', '1.8KB/s', '2.2KB/s'];
+                stats[0].textContent = bandwidths[Math.floor(Math.random() * bandwidths.length)];
+                
+                // Audio quality
+                const qualities = ['95%', '97%', '94%', '96%'];
+                stats[1].textContent = qualities[Math.floor(Math.random() * qualities.length)];
+            };
+
+            setInterval(updateStats, 5000);
+        });
+
+        // Add smooth scrolling for better UX
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add network speed detection simulation
+        function detectNetworkSpeed() {
+            const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            
+            if (connection) {
+                const speed = connection.downlink; // Mbps
+                const speedKbps = speed * 1000;
+                
+                if (speedKbps < 50) {
+                    // Show low bandwidth optimization message
+                    const notification = document.createElement('div');
+                    notification.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #27ae60;
+                        color: white;
+                        padding: 15px 20px;
+                        border-radius: 8px;
+                        z-index: 1000;
+                        font-size: 0.9rem;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                    `;
+                    notification.textContent = '🌟 Perfect! This system is optimized for your connection speed.';
+                    document.body.appendChild(notification);
+                    
+                    setTimeout(() => notification.remove(), 5000);
+                }
+            }
+        }
+
+        // Detect network speed when page loads
+        setTimeout(detectNetworkSpeed, 2000);
+    </script>
+</body>
+</html>
