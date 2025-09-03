@@ -3,59 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Simple Website</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-        nav {
-            background-color: #444;
-            padding: 0.5rem;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-        }
-        main {
-            padding: 2rem;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+    <title>Excellence University - Home</title>
+    <link rel="stylesheet" href="../CSS/style.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Website</h1>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Excellence University</h1>
+                <p class="tagline">Excellence in Education Since 1985</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="faculty.html">Faculty</a></li>
+                    <li><a href="student-portal.html">Student Portal</a></li>
+                    <li><a href="news.html">News & Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
     </header>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </nav>
-    <main>
-        <h2>About Me</h2>
-        <p>This is a simple website created using HTML and CSS.</p>
-    </main>
-    <footer>
-        <p>© 2024 My Simple Website</p>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to Excellence University</h1>
+            <p>Shaping Leaders, Building Future, Creating Excellence</p>
+            <div class="hero-buttons">
+                <a href="admissions.html" class="btn btn-primary">Apply Now</a>
+                <a href="about.html" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="placeholder-image">🎓 Campus Image</div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-item">
+                <h3>15,000+</h3>
+                <p>Students</p>
+            </div>
+            <div class="stat-item">
+                <h3>500+</h3>
+                <p>Faculty Members</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>Programs</p>
+            </div>
+            <div class="stat-item">
+                <h3>95%</h3>
+                <p>Employment Rate</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Programs -->
+    <section class="featured-programs">
+        <div class="container">
+            <h2>Featured Programs</h2>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">💻</div>
+                    <h3>Computer Science</h3>
+                    <p>Bachelor's and Master's degrees in Computer Science with specializations in AI, Cybersecurity, and Software Engineering.</p>
+                    <a href="academics.html#cs" class="btn-link">Learn More</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">⚕️</div>
+                    <h3>Medicine</h3>
+                    <p>Comprehensive medical education with state-of-the-art facilities and clinical training at top hospitals.</p>
+                    <a href="academics.html#med" class="btn-link">Learn More</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">🏗️</div>
+                    <h3>Engineering</h3>
+                    <p>Multiple engineering disciplines including Civil, Mechanical, Electrical, and Chemical Engineering.</p>
+                    <a href="academics.html#eng" class="btn-link">Learn More</a>
+                </div>
+                <div class="program-card">
+                    <div class="program-icon">📊</div>
+                    <h3>Business</h3>
+                    <p>MBA and undergraduate business programs with focus on leadership, innovation, and global markets.</p>
+                    <a href="academics.html#business" class="btn-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="latest-news">
+        <div class="container">
+            <h2>Latest News & Events</h2>
+            <div class="news-grid">
+                <article class="news-item">
+                    <div class="news-date">Dec 15, 2024</div>
+                    <h3>Fall Graduation Ceremony</h3>
+                    <p>Join us in celebrating our graduating class of 2024. The ceremony will be held at the university stadium.</p>
+                    <a href="news.html#graduation" class="btn-link">Read More</a>
+                </article>
+                <article class="news-item">
+                    <div class="news-date">Dec 10, 2024</div>
+                    <h3>Research Grant Awarded</h3>
+                    <p>Our Computer Science department received a $2M grant for AI research in healthcare applications.</p>
+                    <a href="news.html#grant" class="btn-link">Read More</a>
+                </article>
+                <article class="news-item">
+                    <div class="news-date">Dec 5, 2024</div>
+                    <h3>New Campus Library Opens</h3>
+                    <p>The state-of-the-art learning commons is now open to students with 24/7 study spaces and modern technology.</p>
+                    <a href="news.html#library" class="btn-link">Read More</a>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Life Preview -->
+    <section class="campus-life">
+        <div class="container">
+            <div class="campus-content">
+                <h2>Campus Life</h2>
+                <p>Experience a vibrant campus community with over 200 student organizations, state-of-the-art facilities, and endless opportunities for personal and academic growth.</p>
+                <ul>
+                    <li>200+ Student Organizations</li>
+                    <li>NCAA Division I Athletics</li>
+                    <li>Modern Residence Halls</li>
+                    <li>Diverse Dining Options</li>
+                    <li>Cultural Events & Festivals</li>
+                </ul>
+                <a href="gallery.html" class="btn btn-primary">View Gallery</a>
+            </div>
+            <div class="campus-image">
+                <div class="placeholder-image">🏫 Campus Life Image</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Excellence University</h3>
+                    <p>Excellence in Education Since 1985</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                        <a href="#">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="student-portal.html">Student Portal</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Career Services</a></li>
+                        <li><a href="#">Campus Safety</a></li>
+                        <li><a href="#">IT Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📍 123 University Ave<br>Excellence City, EC 12345</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ info@excellence.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Excellence University. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <script src="../CSS/script.js"></script>
 </body>
 </html>
