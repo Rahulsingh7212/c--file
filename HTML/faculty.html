@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty - Excellence University</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Excellence University</h1>
+                <p class="tagline">Excellence in Education Since 1985</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="faculty.html" class="active">Faculty</a></li>
+                    <li><a href="student-portal.html">Student Portal</a></li>
+                    <li><a href="news.html">News & Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Faculty Directory</h1>
+            <p>Meet our distinguished faculty members dedicated to excellence in teaching and research</p>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+            <!-- Search and Filter -->
+            <div class="content-section">
+                <div class="card">
+                    <h2>Find Faculty</h2>
+                    <div style="display: flex; gap: 2rem; align-items: end; flex-wrap: wrap;">
+                        <div class="form-group" style="flex: 1; min-width: 300px;">
+                            <label for="faculty-search">Search by Name:</label>
+                            <input type="text" id="faculty-search" placeholder="Enter faculty name...">
+                        </div>
+                        <div class="form-group" style="min-width: 200px;">
+                            <label for="department-filter">Filter by Department:</label>
+                            <select id="department-filter">
+                                <option value="all">All Departments</option>
+                                <option value="computer-science">Computer Science</option>
+                                <option value="medicine">Medicine</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="business">Business</option>
+                                <option value="arts-sciences">Arts & Sciences</option>
+                                <option value="education">Education</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculty Grid -->
+            <div class="content-section">
+                <div class="faculty-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                    
+                    <!-- Computer Science Faculty -->
+                    <div class="faculty-card card" data-department="computer-science">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">👨‍💻</div>
+                        </div>
+                        <h3>Dr. Alan Thompson</h3>
+                        <p><strong>Professor & Department Chair</strong><br>Computer Science</p>
+                        <p>Ph.D. in Computer Science, MIT<br>25+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Artificial Intelligence, Machine Learning, Natural Language Processing</p>
+                        <p><strong>Email:</strong> athompson@excellence.edu<br><strong>Office:</strong> CS Building, Room 301</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #e8f4fd; color: #1976d2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">AI Research</span>
+                            <span style="background: #e8f4fd; color: #1976d2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Published Author</span>
+                        </div>
+                    </div>
+
+                    <div class="faculty-card card" data-department="computer-science">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">👩‍💻</div>
+                        </div>
+                        <h3>Dr. Lisa Chen</h3>
+                        <p><strong>Associate Professor</strong><br>Computer Science</p>
+                        <p>Ph.D. in Software Engineering, Stanford<br>15+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Cybersecurity, Software Engineering, Distributed Systems</p>
+                        <p><strong>Email:</strong> lchen@excellence.edu<br><strong>Office:</strong> CS Building, Room 205</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #e8f4fd; color: #1976d2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Cybersecurity Expert</span>
+                            <span style="background: #e8f4fd; color: #1976d2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Industry Partner</span>
+                        </div>
+                    </div>
+
+                    <!-- Medicine Faculty -->
+                    <div class="faculty-card card" data-department="medicine">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">👨‍⚕️</div>
+                        </div>
+                        <h3>Dr. Michael Rodriguez</h3>
+                        <p><strong>Professor & Dean</strong><br>School of Medicine</p>
+                        <p>M.D., Ph.D., Johns Hopkins<br>30+ years of experience</p>
+                        <p><strong>Specialization:</strong> Cardiology, Medical Education, Clinical Research</p>
+                        <p><strong>Email:</strong> mrodriguez@excellence.edu<br><strong>Office:</strong> Medical Center, Room 401</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #fee8e8; color: #d32f2f; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Cardiology Expert</span>
+                            <span style="background: #fee8e8; color: #d32f2f; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Medical Researcher</span>
+                        </div>
+                    </div>
+
+                    <div class="faculty-card card" data-department="medicine">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">👩‍⚕️</div>
+                        </div>
+                        <h3>Dr. Sarah Kim</h3>
+                        <p><strong>Associate Professor</strong><br>School of Medicine</p>
+                        <p>M.D., Ph.D., Harvard Medical School<br>18+ years of experience</p>
+                        <p><strong>Specialization:</strong> Pediatrics, Infectious Diseases, Global Health</p>
+                        <p><strong>Email:</strong> skim@excellence.edu<br><strong>Office:</strong> Medical Center, Room 315</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #fee8e8; color: #d32f2f; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Pediatric Specialist</span>
+                            <span style="background: #fee8e8; color: #d32f2f; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Global Health</span>
+                        </div>
+                    </div>
+
+                    <!-- Engineering Faculty -->
+                    <div class="faculty-card card" data-department="engineering">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">👨‍🔬</div>
+                        </div>
+                        <h3>Dr. James Wilson</h3>
+                        <p><strong>Professor</strong><br>Mechanical Engineering</p>
+                        <p>Ph.D. in Mechanical Engineering, Caltech<br>22+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Robotics, Manufacturing, Materials Science</p>
+                        <p><strong>Email:</strong> jwilson@excellence.edu<br><strong>Office:</strong> Engineering Hall, Room 210</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #fff3e0; color: #f57c00; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Robotics Expert</span>
+                            <span style="background: #fff3e0; color: #f57c00; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Industry Patents</span>
+                        </div>
+                    </div>
+
+                    <div class="faculty-card card" data-department="engineering">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #ff9a56 0%, #ff6b6b 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem;">👩‍🔬</div>
+                        </div>
+                        <h3>Dr. Emily Davis</h3>
+                        <p><strong>Associate Professor</strong><br>Electrical Engineering</p>
+                        <p>Ph.D. in Electrical Engineering, UC Berkeley<br>16+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Power Systems, Renewable Energy, Smart Grids</p>
+                        <p><strong>Email:</strong> edavis@excellence.edu<br><strong>Office:</strong> Engineering Hall, Room 145</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #fff3e0; color: #f57c00; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Renewable Energy</span>
+                            <span style="background: #fff3e0; color: #f57c00; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Smart Grid Tech</span>
+                        </div>
+                    </div>
+
+                    <!-- Business Faculty -->
+                    <div class="faculty-card card" data-department="business">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #333; font-size: 2rem;">👨‍💼</div>
+                        </div>
+                        <h3>Dr. Robert Martinez</h3>
+                        <p><strong>Professor & Dean</strong><br>School of Business</p>
+                        <p>Ph.D. in Business Administration, Wharton<br>28+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Strategic Management, International Business, Leadership</p>
+                        <p><strong>Email:</strong> rmartinez@excellence.edu<br><strong>Office:</strong> Business Hall, Room 501</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #e8f5e8; color: #388e3c; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Strategy Expert</span>
+                            <span style="background: #e8f5e8; color: #388e3c; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Fortune 500 Advisor</span>
+                        </div>
+                    </div>
+
+                    <div class="faculty-card card" data-department="business">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #333; font-size: 2rem;">👩‍💼</div>
+                        </div>
+                        <h3>Dr. Jennifer Lee</h3>
+                        <p><strong>Associate Professor</strong><br>Finance</p>
+                        <p>Ph.D. in Finance, University of Chicago<br>14+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Corporate Finance, Investment Banking, Financial Markets</p>
+                        <p><strong>Email:</strong> jlee@excellence.edu<br><strong>Office:</strong> Business Hall, Room 312</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #e8f5e8; color: #388e3c; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Finance Expert</span>
+                            <span style="background: #e8f5e8; color: #388e3c; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Wall Street Alumni</span>
+                        </div>
+                    </div>
+
+                    <!-- Arts & Sciences Faculty -->
+                    <div class="faculty-card card" data-department="arts-sciences">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #333; font-size: 2rem;">👨‍🎨</div>
+                        </div>
+                        <h3>Dr. David Anderson</h3>
+                        <p><strong>Professor</strong><br>Psychology</p>
+                        <p>Ph.D. in Cognitive Psychology, Yale<br>20+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Cognitive Neuroscience, Memory, Learning</p>
+                        <p><strong>Email:</strong> danderson@excellence.edu<br><strong>Office:</strong> Liberal Arts Building, Room 220</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #f3e5f5; color: #7b1fa2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Neuroscience</span>
+                            <span style="background: #f3e5f5; color: #7b1fa2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Memory Research</span>
+                        </div>
+                    </div>
+
+                    <div class="faculty-card card" data-department="arts-sciences">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #333; font-size: 2rem;">👩‍🎨</div>
+                        </div>
+                        <h3>Dr. Maria Garcia</h3>
+                        <p><strong>Professor</strong><br>Biology</p>
+                        <p>Ph.D. in Molecular Biology, Princeton<br>19+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Genetics, Molecular Biology, Biotechnology</p>
+                        <p><strong>Email:</strong> mgarcia@excellence.edu<br><strong>Office:</strong> Science Building, Room 305</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #f3e5f5; color: #7b1fa2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Genetics Research</span>
+                            <span style="background: #f3e5f5; color: #7b1fa2; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Biotechnology</span>
+                        </div>
+                    </div>
+
+                    <!-- Education Faculty -->
+                    <div class="faculty-card card" data-department="education">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #333; font-size: 2rem;">👨‍🏫</div>
+                        </div>
+                        <h3>Dr. William Brown</h3>
+                        <p><strong>Professor & Dean</strong><br>School of Education</p>
+                        <p>Ph.D. in Educational Leadership, Columbia<br>26+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Educational Policy, Teacher Training, Curriculum Development</p>
+                        <p><strong>Email:</strong> wbrown@excellence.edu<br><strong>Office:</strong> Education Building, Room 401</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #e8f5e8; color: #2e7d32; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Education Policy</span>
+                            <span style="background: #e8f5e8; color: #2e7d32; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Curriculum Expert</span>
+                        </div>
+                    </div>
+
+                    <div class="faculty-card card" data-department="education">
+                        <div style="text-align: center; margin-bottom: 1.5rem;">
+                            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: #333; font-size: 2rem;">👩‍🏫</div>
+                        </div>
+                        <h3>Dr. Amanda Taylor</h3>
+                        <p><strong>Associate Professor</strong><br>Elementary Education</p>
+                        <p>Ph.D. in Elementary Education, University of Michigan<br>17+ years of experience</p>
+                        <p><strong>Research Areas:</strong> Early Childhood Development, Reading Instruction, Inclusive Education</p>
+                        <p><strong>Email:</strong> ataylor@excellence.edu<br><strong>Office:</strong> Education Building, Room 225</p>
+                        <div style="margin-top: 1rem;">
+                            <span style="background: #e8f5e8; color: #2e7d32; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem; margin-right: 0.5rem;">Early Childhood</span>
+                            <span style="background: #e8f5e8; color: #2e7d32; padding: 0.2rem 0.5rem; border-radius: 15px; font-size: 0.8rem;">Inclusive Education</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculty Statistics -->
+            <div class="content-section">
+                <div class="card">
+                    <h2>Faculty Excellence</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                        <div>
+                            <div style="font-size: 2.5rem; color: #1e3c72; font-weight: bold;">500+</div>
+                            <p>Total Faculty Members</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; color: #1e3c72; font-weight: bold;">95%</div>
+                            <p>Hold Terminal Degrees</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; color: #1e3c72; font-weight: bold;">12:1</div>
+                            <p>Student-to-Faculty Ratio</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; color: #1e3c72; font-weight: bold;">$50M+</div>
+                            <p>Annual Research Funding</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; color: #1e3c72; font-weight: bold;">200+</div>
+                            <p>Research Publications/Year</p>
+                        </div>
+                        <div>
+                            <div style="font-size: 2.5rem; color: #1e3c72; font-weight: bold;">75+</div>
+                            <p>Awards & Honors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculty Opportunities -->
+            <div class="content-section">
+                <div class="card">
+                    <h2>Join Our Faculty</h2>
+                    <div class="two-column">
+                        <div>
+                            <h3>Why Choose Excellence University?</h3>
+                            <ul>
+                                <li>Competitive salary and comprehensive benefits</li>
+                                <li>State-of-the-art research facilities</li>
+                                <li>Collaborative and supportive environment</li>
+                                <li>Opportunities for professional development</li>
+                                <li>Research sabbatical programs</li>
+                                <li>Work-life balance initiatives</li>
+                                <li>Diversity and inclusion commitment</li>
+                            </ul>
+                            
+                            <h3>Current Openings</h3>
+                            <p>We are always seeking exceptional faculty members to join our community. Current openings include:</p>
+                            <ul>
+                                <li>Assistant Professor - Computer Science (AI/ML)</li>
+                                <li>Associate Professor - Biomedical Engineering</li>
+                                <li>Professor - Business Strategy</li>
+                                <li>Lecturer - Mathematics</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Application Process</h3>
+                            <ol>
+                                <li><strong>Submit Application:</strong> Include CV, cover letter, research statement, and teaching philosophy</li>
+                                <li><strong>Initial Review:</strong> Applications reviewed by search committee</li>
+                                <li><strong>Phone/Video Interview:</strong> Shortlisted candidates interviewed</li>
+                                <li><strong>Campus Visit:</strong> Final candidates invited for on-campus interviews</li>
+                                <li><strong>Job Talk:</strong> Present research and teaching demonstration</li>
+                                <li><strong>Decision:</strong> Final selection and offer extended</li>
+                            </ol>
+                            
+                            <h3>Contact HR</h3>
+                            <p><strong>Faculty Recruitment</strong><br>
+                            Email: facultyjobs@excellence.edu<br>
+                            Phone: (555) 123-4567 ext. 1234<br>
+                            Office: Administration Building, Room 150</p>
+                            
+                            <button class="btn btn-primary" onclick="showNotification('Faculty application form downloaded!', 'success')">View Current Positions</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Excellence University</h3>
+                    <p>Excellence in Education Since 1985</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                        <a href="#">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="student-portal.html">Student Portal</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Career Services</a></li>
+                        <li><a href="#">Campus Safety</a></li>
+                        <li><a href="#">IT Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📍 123 University Ave<br>Excellence City, EC 12345</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ info@excellence.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Excellence University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../CSS/script.js"></script>
+    <script>
+        // Initialize faculty search and filter
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFacultySearch();
+        });
+    </script>
+</body>
+</html>

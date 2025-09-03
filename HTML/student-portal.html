@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Excellence University</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Excellence University</h1>
+                <p class="tagline">Excellence in Education Since 1985</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="faculty.html">Faculty</a></li>
+                    <li><a href="student-portal.html" class="active">Student Portal</a></li>
+                    <li><a href="news.html">News & Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Student Portal</h1>
+            <p>Access your academic information, resources, and campus services</p>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+            <!-- Login Section -->
+            <div class="content-section login-container">
+                <div class="card">
+                    <h2>Student Login</h2>
+                    <form id="student-login-form" class="form-container" style="max-width: 400px; margin: 0 auto;">
+                        <div class="form-group">
+                            <label for="username">Student ID / Username:</label>
+                            <input type="text" id="username" name="username" placeholder="Enter your student ID" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox"> Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Login to Portal</button>
+                        <div style="text-align: center; margin-top: 1rem;">
+                            <a href="#" class="btn-link">Forgot Password?</a> | 
+                            <a href="#" class="btn-link">First Time User?</a>
+                        </div>
+                    </form>
+                    
+                    <div style="margin-top: 2rem; padding: 1rem; background: #e3f2fd; border-radius: 5px; text-align: center;">
+                        <p><strong>Demo Login:</strong> Use any username and password to see the student dashboard demo</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Container (Hidden initially) -->
+            <div class="dashboard-container" style="display: none;">
+                <!-- Dashboard content will be populated by JavaScript -->
+            </div>
+
+            <!-- Quick Access Services -->
+            <div class="content-section">
+                <h2>Quick Access Services</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 3rem; color: #1e3c72; margin-bottom: 1rem;">📚</div>
+                        <h3>Course Registration</h3>
+                        <p>Register for classes, view course schedules, and manage your academic plan.</p>
+                        <button class="btn btn-primary" onclick="showNotification('Registration system accessed!', 'info')">Access Registration</button>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 3rem; color: #1e3c72; margin-bottom: 1rem;">📊</div>
+                        <h3>Grades & Transcripts</h3>
+                        <p>View your grades, GPA, and request official transcripts.</p>
+                        <button class="btn btn-primary" onclick="showNotification('Grades portal opened!', 'info')">View Grades</button>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 3rem; color: #1e3c72; margin-bottom: 1rem;">💰</div>
+                        <h3>Financial Aid</h3>
+                        <p>Check your financial aid status, view account balance, and make payments.</p>
+                        <button class="btn btn-primary" onclick="showNotification('Financial aid portal accessed!', 'info')">View Financial Aid</button>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 3rem; color: #1e3c72; margin-bottom: 1rem;">🏠</div>
+                        <h3>Housing & Dining</h3>
+                        <p>Manage your housing assignments and dining meal plans.</p>
+                        <button class="btn btn-primary" onclick="showNotification('Housing portal opened!', 'info')">Access Housing</button>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 3rem; color: #1e3c72; margin-bottom: 1rem;">📖</div>
+                        <h3>Library Services</h3>
+                        <p>Search library catalog, renew books, and access digital resources.</p>
+                        <button class="btn btn-primary" onclick="showNotification('Library system accessed!', 'info')">Access Library</button>
+                    </div>
+                    
+                    <div class="card" style="text-align: center;">
+                        <div style="font-size: 3rem; color: #1e3c72; margin-bottom: 1rem;">💼</div>
+                        <h3>Career Services</h3>
+                        <p>Explore job opportunities, schedule career counseling, and access resume tools.</p>
+                        <button class="btn btn-primary" onclick="showNotification('Career services portal opened!', 'info')">Access Career Services</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Academic Resources -->
+            <div class="content-section">
+                <h2>Academic Resources</h2>
+                <div class="two-column">
+                    <div class="card">
+                        <h3>🎓 Academic Support</h3>
+                        <ul>
+                            <li><strong>Academic Advising:</strong> Schedule appointments with your advisor</li>
+                            <li><strong>Tutoring Center:</strong> Free tutoring in all subjects</li>
+                            <li><strong>Writing Center:</strong> Help with papers and writing skills</li>
+                            <li><strong>Study Groups:</strong> Join or create study groups</li>
+                            <li><strong>Office Hours:</strong> Connect with professors</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="showNotification('Academic support services accessed!', 'info')">Access Support Services</button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>💻 Technology Resources</h3>
+                        <ul>
+                            <li><strong>Learning Management System (LMS):</strong> Access course materials</li>
+                            <li><strong>Campus WiFi:</strong> Free internet access across campus</li>
+                            <li><strong>Computer Labs:</strong> 24/7 access to computing resources</li>
+                            <li><strong>Software Downloads:</strong> Free student software licenses</li>
+                            <li><strong>Email & Office 365:</strong> Communication and productivity tools</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="showNotification('Technology resources accessed!', 'info')">Access Tech Resources</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Campus Life -->
+            <div class="content-section">
+                <h2>Campus Life & Activities</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                    <div class="card">
+                        <h3>🎯 Student Organizations</h3>
+                        <p>Join one of our 200+ student organizations and clubs:</p>
+                        <ul>
+                            <li>Academic and Professional Clubs</li>
+                            <li>Cultural and International Organizations</li>
+                            <li>Recreational and Sports Clubs</li>
+                            <li>Service and Volunteer Groups</li>
+                            <li>Greek Life Organizations</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="showNotification('Student organizations directory opened!', 'info')">Browse Organizations</button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🏃‍♂️ Recreation & Wellness</h3>
+                        <p>Stay healthy and active with our facilities:</p>
+                        <ul>
+                            <li>State-of-the-art Fitness Center</li>
+                            <li>Indoor Swimming Pool</li>
+                            <li>Group Fitness Classes</li>
+                            <li>Intramural Sports Leagues</li>
+                            <li>Wellness and Mental Health Services</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="showNotification('Recreation center portal accessed!', 'info')">Access Recreation</button>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🎭 Events & Programs</h3>
+                        <p>Participate in campus events and programs:</p>
+                        <ul>
+                            <li>Guest Lectures and Seminars</li>
+                            <li>Cultural Performances and Arts</li>
+                            <li>Career Fairs and Networking</li>
+                            <li>Community Service Projects</li>
+                            <li>Social Events and Celebrations</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="showNotification('Events calendar opened!', 'info')">View Events Calendar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support Services -->
+            <div class="content-section">
+                <h2>Student Support Services</h2>
+                <div class="two-column">
+                    <div class="card">
+                        <h3>🏥 Health & Wellness</h3>
+                        <ul>
+                            <li><strong>Student Health Center:</strong> Medical services and healthcare</li>
+                            <li><strong>Counseling Services:</strong> Mental health support and counseling</li>
+                            <li><strong>Disability Services:</strong> Accommodations and support</li>
+                            <li><strong>Campus Safety:</strong> 24/7 security and emergency services</li>
+                        </ul>
+                        
+                        <h4>Emergency Contacts:</h4>
+                        <p><strong>Campus Emergency:</strong> (555) 123-9911<br>
+                        <strong>Health Center:</strong> (555) 123-4567<br>
+                        <strong>Counseling:</strong> (555) 123-4568</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>🎯 Academic Success</h3>
+                        <ul>
+                            <li><strong>Academic Success Center:</strong> Study skills and time management</li>
+                            <li><strong>Peer Mentoring:</strong> Connect with upperclass students</li>
+                            <li><strong>Learning Communities:</strong> Academic and social support groups</li>
+                            <li><strong>First-Year Experience:</strong> Programs for new students</li>
+                        </ul>
+                        
+                        <h4>Important Deadlines:</h4>
+                        <p><strong>Registration:</strong> April 15 (Fall), November 1 (Spring)<br>
+                        <strong>Drop/Add:</strong> First two weeks of semester<br>
+                        <strong>Financial Aid:</strong> March 1 priority deadline</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="content-section">
+                <div class="card">
+                    <h2>Frequently Asked Questions</h2>
+                    <div class="faq-container">
+                        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 1rem;">
+                            <h4 style="color: #1e3c72; cursor: pointer;" onclick="toggleFAQ(this)">How do I reset my password? ▼</h4>
+                            <div class="faq-answer" style="display: none; margin-top: 0.5rem;">
+                                <p>You can reset your password by clicking the "Forgot Password?" link on the login page, or visit the IT Help Desk in the Library basement with your student ID.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 1rem;">
+                            <h4 style="color: #1e3c72; cursor: pointer;" onclick="toggleFAQ(this)">How do I register for classes? ▼</h4>
+                            <div class="faq-answer" style="display: none; margin-top: 0.5rem;">
+                                <p>Class registration opens according to your academic standing. Check your registration date in the student portal, meet with your advisor, and then register online through the Course Registration system.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 1rem;">
+                            <h4 style="color: #1e3c72; cursor: pointer;" onclick="toggleFAQ(this)">Where can I find my class schedule? ▼</h4>
+                            <div class="faq-answer" style="display: none; margin-top: 0.5rem;">
+                                <p>Your class schedule is available in the student portal under "Academics" → "My Schedule". You can also view it in the mobile app or print a copy.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 1rem;">
+                            <h4 style="color: #1e3c72; cursor: pointer;" onclick="toggleFAQ(this)">How do I pay my tuition bill? ▼</h4>
+                            <div class="faq-answer" style="display: none; margin-top: 0.5rem;">
+                                <p>You can pay online through the student portal, by phone at (555) 123-PAY, by mail, or in person at the Bursar's Office. Payment plans are also available.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="faq-item" style="margin-bottom: 1.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 1rem;">
+                            <h4 style="color: #1e3c72; cursor: pointer;" onclick="toggleFAQ(this)">Who do I contact for technical support? ▼</h4>
+                            <div class="faq-answer" style="display: none; margin-top: 0.5rem;">
+                                <p>For technical issues with the student portal or other IT services, contact the IT Help Desk at (555) 123-HELP or visit them in the Library basement, Room B10.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="content-section">
+                <div class="card">
+                    <h2>Need Help?</h2>
+                    <div class="two-column">
+                        <div>
+                            <h3>📞 Contact Information</h3>
+                            <p><strong>Student Services:</strong> (555) 123-4567<br>
+                            <strong>IT Help Desk:</strong> (555) 123-HELP<br>
+                            <strong>Registrar's Office:</strong> (555) 123-4568<br>
+                            <strong>Financial Aid:</strong> (555) 123-4569<br>
+                            <strong>Bursar's Office:</strong> (555) 123-4570</p>
+                        </div>
+                        <div>
+                            <h3>🕒 Office Hours</h3>
+                            <p><strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br>
+                            <strong>Saturday:</strong> 9:00 AM - 1:00 PM<br>
+                            <strong>Sunday:</strong> Closed</p>
+                            
+                            <p><strong>Extended Hours during Registration:</strong><br>
+                            Monday - Thursday: 8:00 AM - 7:00 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn btn-primary" onclick="showNotification('Support ticket created successfully!', 'success')">Submit Support Ticket</button>
+                        <button class="btn btn-secondary" onclick="showNotification('Live chat initiated!', 'info')" style="margin-left: 1rem;">Start Live Chat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Excellence University</h3>
+                    <p>Excellence in Education Since 1985</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                        <a href="#">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="student-portal.html">Student Portal</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Career Services</a></li>
+                        <li><a href="#">Campus Safety</a></li>
+                        <li><a href="#">IT Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📍 123 University Ave<br>Excellence City, EC 12345</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ info@excellence.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Excellence University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../CSS/script.js"></script>
+    <script>
+        // FAQ toggle functionality
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const isVisible = answer.style.display === 'block';
+            
+            // Hide all other FAQ answers
+            document.querySelectorAll('.faq-answer').forEach(answer => {
+                answer.style.display = 'none';
+            });
+            
+            // Toggle the clicked FAQ
+            if (!isVisible) {
+                answer.style.display = 'block';
+                element.innerHTML = element.innerHTML.replace('▼', '▲');
+            } else {
+                answer.style.display = 'none';
+                element.innerHTML = element.innerHTML.replace('▲', '▼');
+            }
+            
+            // Reset other FAQ arrows
+            document.querySelectorAll('.faq-item h4').forEach(h4 => {
+                if (h4 !== element) {
+                    h4.innerHTML = h4.innerHTML.replace('▲', '▼');
+                }
+            });
+        }
+    </script>
+</body>
+</html>

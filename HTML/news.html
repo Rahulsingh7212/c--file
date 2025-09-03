@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Events - Excellence University</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>Excellence University</h1>
+                <p class="tagline">Excellence in Education Since 1985</p>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="faculty.html">Faculty</a></li>
+                    <li><a href="student-portal.html">Student Portal</a></li>
+                    <li><a href="news.html" class="active">News & Events</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>News & Events</h1>
+            <p>Stay updated with the latest happenings at Excellence University</p>
+        </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="page-content">
+        <div class="container">
+            <!-- Filter Section -->
+            <div class="content-section">
+                <div class="card">
+                    <h2>Filter News & Events</h2>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+                        <button class="btn btn-primary" onclick="filterNews('all')">All</button>
+                        <button class="btn btn-secondary" onclick="filterNews('academic')">Academic</button>
+                        <button class="btn btn-secondary" onclick="filterNews('research')">Research</button>
+                        <button class="btn btn-secondary" onclick="filterNews('campus')">Campus Life</button>
+                        <button class="btn btn-secondary" onclick="filterNews('athletics')">Athletics</button>
+                        <button class="btn btn-secondary" onclick="filterNews('community')">Community</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured News -->
+            <div class="content-section">
+                <h2>Featured News</h2>
+                <div class="featured-news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 2rem;">
+                    <div class="news-item card" data-category="academic" id="graduation">
+                        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1rem; border-radius: 10px 10px 0 0; margin: -2rem -2rem 1rem -2rem;">
+                            <div class="news-date" style="color: rgba(255,255,255,0.9);">December 15, 2024</div>
+                            <h3 style="color: white; margin: 0.5rem 0;">Fall Graduation Ceremony</h3>
+                        </div>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f0f0f0\"/><text x=\"200\" y=\"100\" text-anchor=\"middle\" font-size=\"24\" fill=\"%23666\">🎓 Graduation</text></svg>'); background-size: cover; height: 150px; border-radius: 5px; margin-bottom: 1rem;"></div>
+                        <p>Join us in celebrating our graduating class of 2024! The commencement ceremony will be held at the university stadium with over 3,000 graduates receiving their degrees.</p>
+                        <p><strong>Details:</strong></p>
+                        <ul>
+                            <li>Date: December 15, 2024</li>
+                            <li>Time: 10:00 AM</li>
+                            <li>Location: University Stadium</li>
+                            <li>Guest Speaker: Dr. Maria Santos, Nobel Prize Winner</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="showNotification('Event details downloaded!', 'success')">View Full Details</button>
+                    </div>
+
+                    <div class="news-item card" data-category="research" id="grant">
+                        <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 1rem; border-radius: 10px 10px 0 0; margin: -2rem -2rem 1rem -2rem;">
+                            <div class="news-date" style="color: rgba(255,255,255,0.9);">December 10, 2024</div>
+                            <h3 style="color: white; margin: 0.5rem 0;">$2M Research Grant Awarded</h3>
+                        </div>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 200\"><rect width=\"400\" height=\"200\" fill=\"%23f0f0f0\"/><text x=\"200\" y=\"100\" text-anchor=\"middle\" font-size=\"24\" fill=\"%23666\">🔬 Research</text></svg>'); background-size: cover; height: 150px; border-radius: 5px; margin-bottom: 1rem;"></div>
+                        <p>Our Computer Science department has been awarded a prestigious $2M grant from the National Science Foundation for groundbreaking AI research in healthcare applications.</p>
+                        <p><strong>Research Focus:</strong></p>
+                        <ul>
+                            <li>AI-powered diagnostic tools</li>
+                            <li>Machine learning for personalized medicine</li>
+                            <li>Healthcare data analytics</li>
+                            <li>Collaboration with medical institutions</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="showNotification('Research details accessed!', 'info')">Read Research Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent News -->
+            <div class="content-section">
+                <h2>Recent News</h2>
+                <div class="news-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem;">
+                    
+                    <div class="news-item card" data-category="campus" id="library">
+                        <div class="news-date">December 5, 2024</div>
+                        <h3>New Campus Library Opens</h3>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 150\"><rect width=\"300\" height=\"150\" fill=\"%23e8f4fd\"/><text x=\"150\" y=\"75\" text-anchor=\"middle\" font-size=\"20\" fill=\"%231976d2\">📚 Library</text></svg>'); background-size: cover; height: 120px; border-radius: 5px; margin: 1rem 0;"></div>
+                        <p>The state-of-the-art learning commons is now open to students with 24/7 study spaces, collaborative areas, and access to digital resources.</p>
+                        <ul>
+                            <li>5 floors of study space</li>
+                            <li>500+ computers and workstations</li>
+                            <li>Group study rooms</li>
+                            <li>Quiet study areas</li>
+                            <li>Café and relaxation zones</li>
+                        </ul>
+                        <a href="#" class="btn-link">Learn More</a>
+                    </div>
+
+                    <div class="news-item card" data-category="athletics">
+                        <div class="news-date">December 1, 2024</div>
+                        <h3>Basketball Team Advances to Championships</h3>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 150\"><rect width=\"300\" height=\"150\" fill=\"%23fff3e0\"/><text x=\"150\" y=\"75\" text-anchor=\"middle\" font-size=\"20\" fill=\"%23f57c00\">🏀 Basketball</text></svg>'); background-size: cover; height: 120px; border-radius: 5px; margin: 1rem 0;"></div>
+                        <p>Our men's basketball team secured a spot in the regional championships after an outstanding season with a 24-3 record.</p>
+                        <ul>
+                            <li>Championship game: December 20</li>
+                            <li>Location: Regional Sports Arena</li>
+                            <li>Team ranked #3 in conference</li>
+                            <li>Student tickets available</li>
+                        </ul>
+                        <a href="#" class="btn-link">Game Schedule</a>
+                    </div>
+
+                    <div class="news-item card" data-category="academic">
+                        <div class="news-date">November 28, 2024</div>
+                        <h3>New Engineering Lab Dedicated</h3>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 150\"><rect width=\"300\" height=\"150\" fill=\"%23f3e5f5\"/><text x=\"150\" y=\"75\" text-anchor=\"middle\" font-size=\"20\" fill=\"%237b1fa2\">⚙️ Engineering</text></svg>'); background-size: cover; height: 120px; border-radius: 5px; margin: 1rem 0;"></div>
+                        <p>The new Advanced Manufacturing and Robotics Laboratory provides students with cutting-edge equipment for hands-on learning and research.</p>
+                        <ul>
+                            <li>3D printing and prototyping</li>
+                            <li>Industrial robotics systems</li>
+                            <li>Computer-controlled manufacturing</li>
+                            <li>Industry partnerships</li>
+                        </ul>
+                        <a href="#" class="btn-link">Lab Tour</a>
+                    </div>
+
+                    <div class="news-item card" data-category="community">
+                        <div class="news-date">November 25, 2024</div>
+                        <h3>Community Service Day Success</h3>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 150\"><rect width=\"300\" height=\"150\" fill=\"%23e8f5e8\"/><text x=\"150\" y=\"75\" text-anchor=\"middle\" font-size=\"20\" fill=\"%23388e3c\">🤝 Community</text></svg>'); background-size: cover; height: 120px; border-radius: 5px; margin: 1rem 0;"></div>
+                        <p>Over 1,200 students, faculty, and staff participated in our annual Community Service Day, contributing more than 5,000 volunteer hours to local organizations.</p>
+                        <ul>
+                            <li>25 community partner organizations</li>
+                            <li>Food bank donations</li>
+                            <li>Environmental cleanup projects</li>
+                            <li>Educational outreach programs</li>
+                        </ul>
+                        <a href="#" class="btn-link">Photo Gallery</a>
+                    </div>
+
+                    <div class="news-item card" data-category="research">
+                        <div class="news-date">November 20, 2024</div>
+                        <h3>Medical School Research Breakthrough</h3>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 150\"><rect width=\"300\" height=\"150\" fill=\"%23fee8e8\"/><text x=\"150\" y=\"75\" text-anchor=\"middle\" font-size=\"20\" fill=\"%23d32f2f\">🧬 Medical</text></svg>'); background-size: cover; height: 120px; border-radius: 5px; margin: 1rem 0;"></div>
+                        <p>Researchers at our medical school have published groundbreaking findings on gene therapy treatments for rare genetic disorders in Nature Medicine.</p>
+                        <ul>
+                            <li>Collaboration with international teams</li>
+                            <li>Clinical trial preparations</li>
+                            <li>Potential for FDA approval</li>
+                            <li>Patent applications filed</li>
+                        </ul>
+                        <a href="#" class="btn-link">Research Publication</a>
+                    </div>
+
+                    <div class="news-item card" data-category="campus">
+                        <div class="news-date">November 15, 2024</div>
+                        <h3>Student Housing Expansion Announced</h3>
+                        <div style="background: url('data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 150\"><rect width=\"300\" height=\"150\" fill=\"%23e3f2fd\"/><text x=\"150\" y=\"75\" text-anchor=\"middle\" font-size=\"20\" fill=\"%231976d2\">🏠 Housing</text></svg>'); background-size: cover; height: 120px; border-radius: 5px; margin: 1rem 0;"></div>
+                        <p>The university has approved construction of two new residence halls that will provide housing for an additional 800 students, scheduled to open in fall 2026.</p>
+                        <ul>
+                            <li>Sustainable building design</li>
+                            <li>Modern amenities and technology</li>
+                            <li>Community spaces and study areas</li>
+                            <li>Apartment-style living options</li>
+                        </ul>
+                        <a href="#" class="btn-link">View Plans</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upcoming Events -->
+            <div class="content-section">
+                <h2>Upcoming Events</h2>
+                <div class="events-timeline" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                    
+                    <div class="event-item" style="display: flex; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid #e0e0e0;">
+                        <div style="min-width: 100px; text-align: center; background: #1e3c72; color: white; padding: 1rem; border-radius: 10px;">
+                            <div style="font-size: 1.5rem; font-weight: bold;">DEC</div>
+                            <div style="font-size: 2rem; font-weight: bold;">18</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Winter Concert Series</h3>
+                            <p><strong>Time:</strong> 7:00 PM | <strong>Location:</strong> Performing Arts Center</p>
+                            <p>Join the university orchestra and choir for a magical evening of holiday music and classical performances.</p>
+                            <button class="btn btn-primary" onclick="showNotification('Concert tickets reserved!', 'success')">Reserve Tickets</button>
+                        </div>
+                    </div>
+
+                    <div class="event-item" style="display: flex; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid #e0e0e0;">
+                        <div style="min-width: 100px; text-align: center; background: #ff6b6b; color: white; padding: 1rem; border-radius: 10px;">
+                            <div style="font-size: 1.5rem; font-weight: bold;">DEC</div>
+                            <div style="font-size: 2rem; font-weight: bold;">20</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Basketball Championship Game</h3>
+                            <p><strong>Time:</strong> 6:00 PM | <strong>Location:</strong> Regional Sports Arena</p>
+                            <p>Cheer on our Eagles as they compete for the regional championship title. Student tickets are free with ID.</p>
+                            <button class="btn btn-primary" onclick="showNotification('Game tickets claimed!', 'success')">Get Student Tickets</button>
+                        </div>
+                    </div>
+
+                    <div class="event-item" style="display: flex; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid #e0e0e0;">
+                        <div style="min-width: 100px; text-align: center; background: #667eea; color: white; padding: 1rem; border-radius: 10px;">
+                            <div style="font-size: 1.5rem; font-weight: bold;">JAN</div>
+                            <div style="font-size: 2rem; font-weight: bold;">10</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Spring Career Fair</h3>
+                            <p><strong>Time:</strong> 10:00 AM - 4:00 PM | <strong>Location:</strong> Student Union Ballroom</p>
+                            <p>Connect with over 100 employers for internships and full-time positions. Professional attire required.</p>
+                            <button class="btn btn-primary" onclick="showNotification('Career fair registration completed!', 'success')">Register Now</button>
+                        </div>
+                    </div>
+
+                    <div class="event-item" style="display: flex; gap: 2rem; padding: 1.5rem 0; border-bottom: 1px solid #e0e0e0;">
+                        <div style="min-width: 100px; text-align: center; background: #f093fb; color: white; padding: 1rem; border-radius: 10px;">
+                            <div style="font-size: 1.5rem; font-weight: bold;">JAN</div>
+                            <div style="font-size: 2rem; font-weight: bold;">15</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">International Student Welcome</h3>
+                            <p><strong>Time:</strong> 2:00 PM - 5:00 PM | <strong>Location:</strong> International Center</p>
+                            <p>Welcome event for new international students with cultural activities, campus tour, and resource fair.</p>
+                            <button class="btn btn-primary" onclick="showNotification('Welcome event registered!', 'success')">RSVP</button>
+                        </div>
+                    </div>
+
+                    <div class="event-item" style="display: flex; gap: 2rem; padding: 1.5rem 0;">
+                        <div style="min-width: 100px; text-align: center; background: #ff9a56; color: white; padding: 1rem; border-radius: 10px;">
+                            <div style="font-size: 1.5rem; font-weight: bold;">JAN</div>
+                            <div style="font-size: 2rem; font-weight: bold;">25</div>
+                        </div>
+                        <div style="flex: 1;">
+                            <h3 style="color: #1e3c72; margin-bottom: 0.5rem;">Research Symposium</h3>
+                            <p><strong>Time:</strong> 9:00 AM - 5:00 PM | <strong>Location:</strong> Science Complex</p>
+                            <p>Annual showcase of undergraduate and graduate research projects across all disciplines. Awards and recognition ceremony.</p>
+                            <button class="btn btn-primary" onclick="showNotification('Symposium registration submitted!', 'success')">Submit Abstract</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Calendar -->
+            <div class="content-section">
+                <div class="card">
+                    <h2>📅 Academic Calendar</h2>
+                    <div class="two-column">
+                        <div>
+                            <h3>Spring Semester 2025</h3>
+                            <ul>
+                                <li><strong>January 13:</strong> Classes Begin</li>
+                                <li><strong>January 20:</strong> Martin Luther King Jr. Day (No Classes)</li>
+                                <li><strong>February 17:</strong> Presidents' Day (No Classes)</li>
+                                <li><strong>March 10-14:</strong> Spring Break</li>
+                                <li><strong>April 18:</strong> Good Friday (No Classes)</li>
+                                <li><strong>May 5-9:</strong> Final Examinations</li>
+                                <li><strong>May 10:</strong> Spring Commencement</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Important Deadlines</h3>
+                            <ul>
+                                <li><strong>December 15:</strong> Spring Registration Opens</li>
+                                <li><strong>January 15:</strong> Add/Drop Deadline</li>
+                                <li><strong>March 1:</strong> Financial Aid Priority Deadline</li>
+                                <li><strong>March 15:</strong> Withdrawal Deadline</li>
+                                <li><strong>April 1:</strong> Summer Registration Opens</li>
+                                <li><strong>April 15:</strong> Fall Housing Applications Due</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <button class="btn btn-primary" onclick="showNotification('Calendar downloaded!', 'success')">Download Full Calendar</button>
+                        <button class="btn btn-secondary" onclick="showNotification('Calendar synced!', 'success')" style="margin-left: 1rem;">Sync to Phone</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="content-section">
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <h2 style="color: white;">Stay Connected</h2>
+                    <p>Subscribe to our newsletter to receive the latest news and updates from Excellence University.</p>
+                    <form style="display: flex; gap: 1rem; align-items: end; flex-wrap: wrap; margin-top: 1.5rem;">
+                        <div class="form-group" style="flex: 1; min-width: 250px;">
+                            <label for="newsletter-email" style="color: white;">Email Address:</label>
+                            <input type="email" id="newsletter-email" placeholder="Enter your email" required>
+                        </div>
+                        <button type="submit" class="btn" style="background: white; color: #667eea;" onclick="showNotification('Successfully subscribed to newsletter!', 'success')">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Excellence University</h3>
+                    <p>Excellence in Education Since 1985</p>
+                    <div class="social-links">
+                        <a href="#">📘</a>
+                        <a href="#">🐦</a>
+                        <a href="#">📷</a>
+                        <a href="#">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="student-portal.html">Student Portal</a></li>
+                        <li><a href="faculty.html">Faculty</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Library</a></li>
+                        <li><a href="#">Career Services</a></li>
+                        <li><a href="#">Campus Safety</a></li>
+                        <li><a href="#">IT Services</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📍 123 University Ave<br>Excellence City, EC 12345</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>✉️ info@excellence.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Excellence University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../CSS/script.js"></script>
+</body>
+</html>
