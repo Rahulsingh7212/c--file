@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educator Dashboard - Rural Classroom</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8e44ad, #3498db);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .panel {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .panel h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .session-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .control-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .start-session {
+            background: #27ae60;
+            color: white;
+        }
+
+        .start-session:hover {
+            background: #219a52;
+        }
+
+        .end-session {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .end-session:hover {
+            background: #c0392b;
+        }
+
+        .record-btn {
+            background: #8e44ad;
+            color: white;
+        }
+
+        .record-btn:hover {
+            background: #7d3c98;
+        }
+
+        .share-screen {
+            background: #3498db;
+            color: white;
+        }
+
+        .share-screen:hover {
+            background: #2980b9;
+        }
+
+        .session-status {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .status-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .status-value {
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        .students-list {
+            max-height: 300px;
+            overflow-y: auto;
+            background: #fafafa;
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .student-item {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            padding: 8px;
+            background: white;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .student-status {
+            margin-left: auto;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .online {
+            background: #d5f4e6;
+            color: #27ae60;
+        }
+
+        .offline {
+            background: #fadbd8;
+            color: #e74c3c;
+        }
+
+        .slide-upload {
+            border: 2px dashed #bdc3c7;
+            border-radius: 6px;
+            padding: 30px;
+            text-align: center;
+            background: #fafafa;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .slide-upload:hover {
+            border-color: #3498db;
+            background: #ecf0f1;
+        }
+
+        .slide-upload.dragover {
+            border-color: #27ae60;
+            background: #d5f4e6;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #7f8c8d;
+        }
+
+        .current-slides {
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .slide-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #ecf0f1;
+            margin-bottom: 5px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .slide-controls {
+            display: flex;
+            gap: 5px;
+        }
+
+        .slide-btn {
+            padding: 4px 8px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .show-btn {
+            background: #3498db;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .interactive-tools {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .tool-card {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            background: #d5dbdb;
+            transform: translateY(-2px);
+        }
+
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .analytics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .chat-panel {
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            background: #fafafa;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .chat-message {
+            margin-bottom: 8px;
+            padding: 8px;
+            background: white;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            resize: none;
+        }
+
+        .send-btn {
+            padding: 10px 20px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .recording-controls {
+            background: #2c3e50;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .recording-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .recording-dot {
+            width: 10px;
+            height: 10px;
+            background: #e74c3c;
+            border-radius: 50%;
+            animation: pulse 1s infinite;
+        }
+
+        .recording-time {
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .quality-settings {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .setting-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .setting-group label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .setting-group select,
+        .setting-group input {
+            padding: 8px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .session-controls {
+                grid-template-columns: 1fr;
+            }
+            
+            .interactive-tools {
+                grid-template-columns: 1fr;
+            }
+            
+            .analytics-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: #27ae60;
+        }
+
+        .notification.error {
+            background: #e74c3c;
+        }
+
+        .notification.info {
+            background: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>👩‍🏫 Educator Dashboard</h1>
+            <p>Deliver engaging lectures from anywhere - optimized for rural connectivity</p>
+        </header>
+
+        <div class="dashboard-grid">
+            <!-- Session Controls -->
+            <div class="panel">
+                <h3>🎯 Session Control</h3>
+                
+                <div class="session-controls">
+                    <button class="control-btn start-session" id="startSession">
+                        ▶️ Start Live Session
+                    </button>
+                    <button class="control-btn end-session" id="endSession" disabled>
+                        ⏹️ End Session
+                    </button>
+                    <button class="control-btn record-btn" id="recordBtn">
+                        🔴 Start Recording
+                    </button>
+                    <button class="control-btn share-screen" id="shareScreen">
+                        📺 Share Screen
+                    </button>
+                </div>
+
+                <div class="session-status" id="sessionStatus">
+                    <div class="status-item">
+                        <span>Session Status:</span>
+                        <span class="status-value" id="sessionStatusText">Not Started</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Connected Students:</span>
+                        <span class="status-value" id="studentCount">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Audio Quality:</span>
+                        <span class="status-value" id="audioQuality">High</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Session Duration:</span>
+                        <span class="status-value" id="sessionDuration">00:00:00</span>
+                    </div>
+                </div>
+
+                <div class="recording-controls" id="recordingControls" style="display: none;">
+                    <div class="recording-status">
+                        <div class="recording-dot"></div>
+                        <span>Recording in progress</span>
+                        <span class="recording-time" id="recordingTime">00:00:00</span>
+                    </div>
+                </div>
+
+                <div class="quality-settings">
+                    <div class="setting-group">
+                        <label>Audio Quality</label>
+                        <select id="audioQualitySelect">
+                            <option value="high">High Quality (32 kbps)</option>
+                            <option value="medium" selected>Medium Quality (16 kbps)</option>
+                            <option value="low">Low Quality (8 kbps)</option>
+                        </select>
+                    </div>
+                    <div class="setting-group">
+                        <label>Auto-adjust for bandwidth</label>
+                        <select id="autoAdjust">
+                            <option value="enabled" selected>Enabled</option>
+                            <option value="disabled">Disabled</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connected Students -->
+            <div class="panel">
+                <h3>👥 Connected Students</h3>
+                <div class="students-list" id="studentsList">
+                    <div class="student-item">
+                        <span>📱 Priya Sharma (Rural Campus A)</span>
+                        <span class="student-status online">Online</span>
+                    </div>
+                    <div class="student-item">
+                        <span>📱 Rajesh Kumar (Rural Campus B)</span>
+                        <span class="student-status online">Online</span>
+                    </div>
+                    <div class="student-item">
+                        <span>📱 Anita Devi (Rural Campus A)</span>
+                        <span class="student-status offline">Offline</span>
+                    </div>
+                    <div class="student-item">
+                        <span>📱 Vikram Singh (Rural Campus C)</span>
+                        <span class="student-status online">Online</span>
+                    </div>
+                    <div class="student-item">
+                        <span>📱 Meera Joshi (Rural Campus B)</span>
+                        <span class="student-status online">Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Slide Management -->
+            <div class="panel">
+                <h3>📊 Slide Management</h3>
+                
+                <div class="slide-upload" id="slideUpload">
+                    <div class="upload-icon">📁</div>
+                    <p><strong>Drop slides here or click to upload</strong></p>
+                    <p style="font-size: 0.9rem; color: #7f8c8d; margin-top: 5px;">
+                        Supports PDF, PPT, images. Auto-compressed for low bandwidth.
+                    </p>
+                    <input type="file" id="fileInput" style="display: none;" accept=".pdf,.ppt,.pptx,.jpg,.png" multiple>
+                </div>
+
+                <div class="current-slides" id="currentSlides">
+                    <div class="slide-item">
+                        <span>📄 Introduction to AI (Slide 1)</span>
+                        <div class="slide-controls">
+                            <button class="slide-btn show-btn" data-slide="1">Show</button>
+                            <button class="slide-btn delete-btn" data-slide="1">Delete</button>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <span>📄 Types of AI (Slide 2)</span>
+                        <div class="slide-controls">
+                            <button class="slide-btn show-btn" data-slide="2">Show</button>
+                            <button class="slide-btn delete-btn" data-slide="2">Delete</button>
+                        </div>
+                    </div>
+                    <div class="slide-item">
+                        <span>📄 Machine Learning Basics (Slide 3)</span>
+                        <div class="slide-controls">
+                            <button class="slide-btn show-btn" data-slide="3">Show</button>
+                            <button class="slide-btn delete-btn" data-slide="3">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Tools -->
+            <div class="panel">
+                <h3>🛠️ Interactive Tools</h3>
+                
+                <div class="interactive-tools">
+                    <div class="tool-card" id="createPoll">
+                        <div class="tool-icon">📊</div>
+                        <h4>Create Poll</h4>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Quick audience polls</p>
+                    </div>
+                    
+                    <div class="tool-card" id="createQuiz">
+                        <div class="tool-icon">❓</div>
+                        <h4>Create Quiz</h4>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Test understanding</p>
+                    </div>
+                    
+                    <div class="tool-card" id="shareWhiteboard">
+                        <div class="tool-icon">📝</div>
+                        <h4>Whiteboard</h4>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Draw and explain</p>
+                    </div>
+                    
+                    <div class="tool-card" id="shareDocument">
+                        <div class="tool-icon">📄</div>
+                        <h4>Share Document</h4>
+                        <p style="font-size: 0.8rem; color: #7f8c8d;">Text-based content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Real-time Chat -->
+            <div class="panel">
+                <h3>💬 Live Chat</h3>
+                
+                <div class="chat-panel">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message">
+                            <strong>Priya:</strong> Thank you for the clear explanation, Professor!
+                        </div>
+                        <div class="chat-message">
+                            <strong>Rajesh:</strong> Could you please explain machine learning again?
+                        </div>
+                        <div class="chat-message">
+                            <strong>Vikram:</strong> The audio quality is excellent despite slow internet.
+                        </div>
+                        <div class="chat-message">
+                            <strong>Meera:</strong> Can we get the slides for offline study?
+                        </div>
+                    </div>
+                    
+                    <div class="chat-input-area">
+                        <textarea class="chat-input" id="chatInput" placeholder="Type your response to students..." rows="2"></textarea>
+                        <button class="send-btn" id="sendMessage">Send</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Session Analytics -->
+            <div class="panel">
+                <h3>📈 Session Analytics</h3>
+                
+                <div class="analytics-grid">
+                    <div class="metric-card">
+                        <div class="metric-value" id="totalStudents">24</div>
+                        <div class="metric-label">Total Students</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="activeStudents">18</div>
+                        <div class="metric-label">Active Now</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="avgBandwidth">12</div>
+                        <div class="metric-label">Avg Bandwidth (KB/s)</div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-value" id="engagement">89%</div>
+                        <div class="metric-label">Engagement Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class EducatorDashboard {
+            constructor() {
+                this.isSessionActive = false;
+                this.isRecording = false;
+                this.sessionStartTime = null;
+                this.recordingStartTime = null;
+                this.students = [
+                    { name: 'Priya Sharma', campus: 'Rural Campus A', status: 'online' },
+                    { name: 'Rajesh Kumar', campus: 'Rural Campus B', status: 'online' },
+                    { name: 'Anita Devi', campus: 'Rural Campus A', status: 'offline' },
+                    { name: 'Vikram Singh', campus: 'Rural Campus C', status: 'online' },
+                    { name: 'Meera Joshi', campus: 'Rural Campus B', status: 'online' }
+                ];
+                
+                this.initializeEventListeners();
+                this.updateStudentsList();
+                this.startMetricsUpdate();
+            }
+
+            initializeEventListeners() {
+                // Session controls
+                document.getElementById('startSession').addEventListener('click', () => this.startSession());
+                document.getElementById('endSession').addEventListener('click', () => this.endSession());
+                document.getElementById('recordBtn').addEventListener('click', () => this.toggleRecording());
+
+                // File upload
+                document.getElementById('slideUpload').addEventListener('click', () => {
+                    document.getElementById('fileInput').click();
+                });
+                
+                document.getElementById('fileInput').addEventListener('change', (e) => this.handleFileUpload(e));
+
+                // Drag and drop
+                const uploadArea = document.getElementById('slideUpload');
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('dragover');
+                });
+                
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('dragover');
+                });
+                
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('dragover');
+                    this.handleFileUpload(e);
+                });
+
+                // Chat
+                document.getElementById('sendMessage').addEventListener('click', () => this.sendChatMessage());
+                document.getElementById('chatInput').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendChatMessage();
+                    }
+                });
+
+                // Interactive tools
+                document.getElementById('createPoll').addEventListener('click', () => this.createPoll());
+                document.getElementById('createQuiz').addEventListener('click', () => this.createQuiz());
+                document.getElementById('shareWhiteboard').addEventListener('click', () => this.shareWhiteboard());
+                document.getElementById('shareDocument').addEventListener('click', () => this.shareDocument());
+
+                // Slide controls
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('show-btn')) {
+                        this.showSlide(e.target.dataset.slide);
+                    } else if (e.target.classList.contains('delete-btn')) {
+                        this.deleteSlide(e.target.dataset.slide);
+                    }
+                });
+
+                // Quality settings
+                document.getElementById('audioQualitySelect').addEventListener('change', (e) => {
+                    this.updateAudioQuality(e.target.value);
+                });
+            }
+
+            startSession() {
+                this.isSessionActive = true;
+                this.sessionStartTime = new Date();
+                
+                document.getElementById('startSession').disabled = true;
+                document.getElementById('endSession').disabled = false;
+                document.getElementById('sessionStatusText').textContent = 'Live';
+                document.getElementById('sessionStatusText').style.color = '#27ae60';
+                
+                this.showNotification('Live session started successfully!', 'success');
+                this.startSessionTimer();
+                
+                // Simulate student connections
+                setTimeout(() => this.simulateStudentActivity(), 2000);
+            }
+
+            endSession() {
+                this.isSessionActive = false;
+                this.sessionStartTime = null;
+                
+                if (this.isRecording) {
+                    this.toggleRecording();
+                }
+                
+                document.getElementById('startSession').disabled = false;
+                document.getElementById('endSession').disabled = true;
+                document.getElementById('sessionStatusText').textContent = 'Ended';
+                document.getElementById('sessionStatusText').style.color = '#e74c3c';
+                
+                this.showNotification('Session ended. Recording saved for offline access.', 'info');
+            }
+
+            toggleRecording() {
+                if (!this.isRecording) {
+                    this.isRecording = true;
+                    this.recordingStartTime = new Date();
+                    
+                    document.getElementById('recordBtn').textContent = '⏹️ Stop Recording';
+                    document.getElementById('recordBtn').style.background = '#e74c3c';
+                    document.getElementById('recordingControls').style.display = 'block';
+                    
+                    this.startRecordingTimer();
+                    this.showNotification('Recording started. Optimized for low bandwidth.', 'success');
+                } else {
+                    this.isRecording = false;
+                    this.recordingStartTime = null;
+                    
+                    document.getElementById('recordBtn').textContent = '🔴 Start Recording';
+                    document.getElementById('recordBtn').style.background = '#8e44ad';
+                    document.getElementById('recordingControls').style.display = 'none';
+                    
+                    this.showNotification('Recording stopped and compressed. File size: 2.1 MB', 'success');
+                }
+            }
+
+            startSessionTimer() {
+                if (this.sessionStartTime) {
+                    const updateTimer = () => {
+                        if (!this.isSessionActive) return;
+                        
+                        const elapsed = new Date() - this.sessionStartTime;
+                        const hours = Math.floor(elapsed / 3600000);
+                        const minutes = Math.floor((elapsed % 3600000) / 60000);
+                        const seconds = Math.floor((elapsed % 60000) / 1000);
+                        
+                        document.getElementById('sessionDuration').textContent = 
+                            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        
+                        setTimeout(updateTimer, 1000);
+                    };
+                    updateTimer();
+                }
+            }
+
+            startRecordingTimer() {
+                if (this.recordingStartTime) {
+                    const updateTimer = () => {
+                        if (!this.isRecording) return;
+                        
+                        const elapsed = new Date() - this.recordingStartTime;
+                        const hours = Math.floor(elapsed / 3600000);
+                        const minutes = Math.floor((elapsed % 3600000) / 60000);
+                        const seconds = Math.floor((elapsed % 60000) / 1000);
+                        
+                        document.getElementById('recordingTime').textContent = 
+                            `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                        
+                        setTimeout(updateTimer, 1000);
+                    };
+                    updateTimer();
+                }
+            }
+
+            handleFileUpload(event) {
+                const files = event.target ? event.target.files : event.dataTransfer.files;
+                
+                Array.from(files).forEach((file, index) => {
+                    setTimeout(() => {
+                        this.addSlideToList(file.name, index + 4);
+                        this.showNotification(`${file.name} uploaded and compressed successfully!`, 'success');
+                    }, (index + 1) * 1000);
+                });
+            }
+
+            addSlideToList(fileName, slideNumber) {
+                const slidesContainer = document.getElementById('currentSlides');
+                const slideItem = document.createElement('div');
+                slideItem.className = 'slide-item';
+                slideItem.innerHTML = `
+                    <span>📄 ${fileName} (Slide ${slideNumber})</span>
+                    <div class="slide-controls">
+                        <button class="slide-btn show-btn" data-slide="${slideNumber}">Show</button>
+                        <button class="slide-btn delete-btn" data-slide="${slideNumber}">Delete</button>
+                    </div>
+                `;
+                slidesContainer.appendChild(slideItem);
+            }
+
+            showSlide(slideNumber) {
+                this.showNotification(`Showing slide ${slideNumber} to all students`, 'info');
+            }
+
+            deleteSlide(slideNumber) {
+                if (confirm('Delete this slide?')) {
+                    const slideItems = document.querySelectorAll('.slide-item');
+                    slideItems.forEach(item => {
+                        if (item.querySelector(`[data-slide="${slideNumber}"]`)) {
+                            item.remove();
+                        }
+                    });
+                    this.showNotification(`Slide ${slideNumber} deleted`, 'info');
+                }
+            }
+
+            sendChatMessage() {
+                const input = document.getElementById('chatInput');
+                const message = input.value.trim();
+                
+                if (message) {
+                    const chatMessages = document.getElementById('chatMessages');
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'chat-message';
+                    messageDiv.innerHTML = `<strong>Instructor:</strong> ${message}`;
+                    chatMessages.appendChild(messageDiv);
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                    
+                    input.value = '';
+                    
+                    // Simulate student responses
+                    setTimeout(() => {
+                        const responses = [
+                            'Thank you for the explanation!',
+                            'Very helpful, Professor.',
+                            'Could you share the slides?',
+                            'Great session today!'
+                        ];
+                        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                        const studentNames = ['Priya', 'Rajesh', 'Vikram', 'Meera'];
+                        const randomStudent = studentNames[Math.floor(Math.random() * studentNames.length)];
+                        
+                        const responseDiv = document.createElement('div');
+                        responseDiv.className = 'chat-message';
+                        responseDiv.innerHTML = `<strong>${randomStudent}:</strong> ${randomResponse}`;
+                        chatMessages.appendChild(responseDiv);
+                        chatMessages.scrollTop = chatMessages.scrollHeight;
+                    }, 2000);
+                }
+            }
+
+            createPoll() {
+                this.showNotification('Poll created and sent to all students!', 'success');
+            }
+
+            createQuiz() {
+                this.showNotification('Quiz created and made available to students!', 'success');
+            }
+
+            shareWhiteboard() {
+                this.showNotification('Whiteboard shared with all students!', 'info');
+            }
+
+            shareDocument() {
+                this.showNotification('Document shared and optimized for low bandwidth!', 'info');
+            }
+
+            updateStudentsList() {
+                const container = document.getElementById('studentsList');
+                container.innerHTML = '';
+                
+                this.students.forEach(student => {
+                    const studentDiv = document.createElement('div');
+                    studentDiv.className = 'student-item';
+                    studentDiv.innerHTML = `
+                        <span>📱 ${student.name} (${student.campus})</span>
+                        <span class="student-status ${student.status}">${student.status.charAt(0).toUpperCase() + student.status.slice(1)}</span>
+                    `;
+                    container.appendChild(studentDiv);
+                });
+                
+                const onlineCount = this.students.filter(s => s.status === 'online').length;
+                document.getElementById('studentCount').textContent = onlineCount;
+            }
+
+            simulateStudentActivity() {
+                setInterval(() => {
+                    // Randomly change student status
+                    const randomIndex = Math.floor(Math.random() * this.students.length);
+                    const student = this.students[randomIndex];
+                    student.status = Math.random() > 0.2 ? 'online' : 'offline';
+                    
+                    this.updateStudentsList();
+                }, 10000);
+            }
+
+            startMetricsUpdate() {
+                setInterval(() => {
+                    // Update random metrics for demo
+                    const totalStudents = Math.floor(Math.random() * 5) + 20;
+                    const activeStudents = Math.floor(Math.random() * 5) + 15;
+                    const avgBandwidth = Math.floor(Math.random() * 10) + 8;
+                    const engagement = Math.floor(Math.random() * 20) + 75;
+                    
+                    document.getElementById('totalStudents').textContent = totalStudents;
+                    document.getElementById('activeStudents').textContent = activeStudents;
+                    document.getElementById('avgBandwidth').textContent = avgBandwidth;
+                    document.getElementById('engagement').textContent = engagement + '%';
+                }, 5000);
+            }
+
+            updateAudioQuality(quality) {
+                const qualityMap = {
+                    'high': 'High (32 kbps)',
+                    'medium': 'Medium (16 kbps)',
+                    'low': 'Low (8 kbps)'
+                };
+                
+                document.getElementById('audioQuality').textContent = qualityMap[quality] || 'Medium';
+                this.showNotification(`Audio quality changed to ${qualityMap[quality]}`, 'info');
+            }
+
+            showNotification(message, type = 'info') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type}`;
+                notification.textContent = message;
+                
+                document.body.appendChild(notification);
+                
+                setTimeout(() => notification.classList.add('show'), 100);
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => notification.remove(), 300);
+                }, 4000);
+            }
+        }
+
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new EducatorDashboard();
+        });
+    </script>
+</body>
+</html>
